@@ -14,23 +14,19 @@
 
     </div>
 </body>
-<input type="text">
-<button type="submit">Enviar</button>
+<input type="text" id="input" placeholder="Escribí tu mensaje acá">
+<button onclick="sendMessage()">Enviar</button>
 <script src="jquery.js"></script>
 <script>
     var index = 0;
     var questions = [
         ["Hola! Bienvenido! Soy tu asistente virtual. Cuál es tu nombre?"],
-        ["Cuál es tu nombre ? < br >"],
-        ["Tu email ? < br >"],
-        ["Tu número de teléfono ? < br >"],
-
-        ["Qué curso te gustaría tomar ? < br > 1. Web Development < br > 2. Graphics < br > 3. SEO < br > 4. Mobile Application < br >"],
-
-        ["Cuándo podrías unirte ? < br >"],
-
-        ["Gracias por tu atención!Entrá a mi < a href = 'http://betianatetti.github.io/cv' > Currículum Vitae < /a>"]
-
+        ["Tu email ? <br>"],
+        ["Tu número de teléfono ? <br>"],
+        ["Qué curso te gustaría tomar ? <br> 1. Web Development <br> 2. Graphics <br> 3. SEO <br> 4. Mobile Application <br>"],
+        ["Cuándo podrías unirte ? <br>"],
+        ["Cuántos años tenés ? <br>"],
+        ["Gracias por tu atención! Entrá a mi <a href='http://betianatetti.github.io/cv'>Currículum Vitae</a>"]
     ];
     var answers = [
         [''],
@@ -41,21 +37,36 @@
         [''],
         ['']
     ];
-
     function askQuestions(i) {
         if (typeof(questions[index]) === 'undefined') {
-
         } else {
-            $(".chatbox").append('<span class="user_name">Betiana Tetti</span><span class="user_message">' + questions[i] + '</span>')
-            index++;
-            askQuestions(index);
+            setTimeout(function(){
+                $(".chatbox").append('<span class="user_name">Betiana Tetti</span><span class="user_message">' + questions[i] + '</span>')
+            },2000);
         }
     }
-
     function chatInit() {
         askQuestions(index);
     }
     chatInit();
+
+    document.querySelector("#input").addEventListener('keypress', function(e){
+        var key = e.keyCode || e.which;
+        if (key==13) {
+            sendMessage();
+        }
+    });
+
+    function sendMessage() {
+        var input =$("#input").val();
+            answers[index]=input;
+            $(".chatbox").append('<span class="user_name">Vos</span><span class="user_message">' + input + '</span>');
+            $(".chatbox").scrollTop($(".chatbox").prop('scrollHeight'));
+            index++;
+            askQuestions(index);
+            $("#input").val('');
+            $("#input").focus();
+    }
 </script>
 
 </html>
