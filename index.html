@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Chatbot Betiana
+    </title>
+    <meta charset="utf-8">
+    <script>
+        var cadena, cod, respuesta;
+        var tener = RegExp("(TIENE|TIENES|TENGO|TENÉS|TENES)");
+        var edad = /AÑOS/;
+
+        function evaluarEdad() {
+            cadena = document.getElementById("textoPregunta").value;
+            cadena = cadena.toUpperCase();
+            document.getElementById("resultado1").innerHTML = tener.test(cadena);
+            document.getElementById("resultado2").innerHTML = edad.test(cadena);
+
+            if (tener.test(cadena) == true && edad.test(cadena) == true) {
+                cod = 4
+            }
+            responder();
+        }
+
+        function responder() {
+            switch (cod) {
+                case 4:
+                    mensaje = "Tengo 30 años"
+                    break;
+                case 5:
+
+                    break;
+                default:
+            }
+            document.getElementById("respuesta").innerHTML = mensaje;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Chatbot Betiana</h1>
+    <input type="text" name="txtPregunta" id="textoPregunta" size="100">
+    <button type="submit" name="boton" onclick="evaluarEdad()">Enviar</button>
+
+    <p id="resultado1"></p>
+    <p id="resultado2"></p>
+    <p id="respuesta"></p>
+</body>
+
+</html>

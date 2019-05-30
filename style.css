@@ -1,0 +1,17 @@
+.chatbox {
+    height: 300px;
+    width: 300px;
+    background: #202020;
+    padding: 20px;
+    overflow: scroll;
+}
+
+.user_name {
+    color: red;
+    display: block;
+}
+
+.user_message {
+    color: #FFF;
+    display: block;
+}

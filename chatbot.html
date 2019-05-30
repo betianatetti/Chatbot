@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Chatbot Betiana
+    </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="chatbox">
+
+    </div>
+</body>
+<input type="text">
+<button type="submit">Enviar</button>
+<script src="jquery.js"></script>
+<script>
+    var index = 0;
+    var questions = [
+        ["Hola! Bienvenido! Soy tu asistente virtual. Cuál es tu nombre?"],
+        ["Cuál es tu nombre ? < br >"],
+        ["Tu email ? < br >"],
+        ["Tu número de teléfono ? < br >"],
+
+        ["Qué curso te gustaría tomar ? < br > 1. Web Development < br > 2. Graphics < br > 3. SEO < br > 4. Mobile Application < br >"],
+
+        ["Cuándo podrías unirte ? < br >"],
+
+        ["Gracias por tu atención!Entrá a mi < a href = 'http://betianatetti.github.io/cv' > Currículum Vitae < /a>"]
+
+    ];
+    var answers = [
+        [''],
+        [''],
+        [''],
+        [''],
+        [''],
+        [''],
+        ['']
+    ];
+
+    function askQuestions(i) {
+        if (typeof(index) === 'undefined') {
+
+        } else {
+            $(".chatbox").append('<span class="user_name">Betiana Tetti</span><span class="user_message">' + questions[i] + '</span>')
+            index++;
+            askQuestions(index);
+        }
+    }
+
+    function chatInit() {
+        askQuestions(index);
+    }
+    chatInit();
+</script>
+
+</html>
