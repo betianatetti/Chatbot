@@ -37,35 +37,37 @@
         [''],
         ['']
     ];
+
     function askQuestions(i) {
-        if (typeof(questions[index]) === 'undefined') {
-        } else {
-            setTimeout(function(){
+        if (typeof(questions[index]) === 'undefined') {} else {
+            setTimeout(function() {
                 $(".chatbox").append('<span class="user_name">Betiana Tetti</span><span class="user_message">' + questions[i] + '</span>')
-            },2000);
+            }, 2000);
         }
     }
+
     function chatInit() {
         askQuestions(index);
     }
     chatInit();
-
-    document.querySelector("#input").addEventListener('keypress', function(e){
+    document.querySelector("#input").addEventListener('keypress', function(e) {
         var key = e.keyCode || e.which;
-        if (key==13) {
+        if (key == 13) {
             sendMessage();
         }
     });
 
     function sendMessage() {
-        var input =$("#input").val();
-            answers[index]=input;
-            $(".chatbox").append('<span class="user_name">Vos</span><span class="user_message">' + input + '</span>');
-            $(".chatbox").scrollTop($(".chatbox").prop('scrollHeight'));
-            index++;
-            askQuestions(index);
-            $("#input").val('');
-            $("#input").focus();
+        var input = $("#input").val();
+        answers[index] = input;
+        $(".chatbox").append('<span class="user_name">Vos</span><span class="user_message">' + input + '</span>');
+        $(".chatbox").animate({
+            scrollTop: $(".chatbox").offset().top + $(".chatbox")[0].scrollHeight
+        }, 2000);
+        index++;
+        askQuestions(index);
+        $("#input").val('');
+        $("#input").focus();
     }
 </script>
 
